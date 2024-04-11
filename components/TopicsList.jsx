@@ -3,8 +3,9 @@ import {HiPencilAlt} from "react-icons/hi"
 import Link from "next/link";
 
 const getTopics = async() => {
+    const apiUrl = process.env.API_URL;
     try {
-        const res = await fetch('http://localhost:3000/api/topics', {
+        const res = await fetch(`${apiUrl}/api/topics`, {
             cache: 'no-store',
         });
 
@@ -19,7 +20,7 @@ const getTopics = async() => {
 
 export default async function TopicsList(){
 
-    const {topics} = await getTopics();
+    const { topics } = await getTopics();
     return (
         <>
         {topics.map(t => (
